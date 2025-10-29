@@ -2,7 +2,11 @@ package ch.makery.address;
 
 import java.io.IOException;
 
+import ch.makery.address.model.Person;
+import ch.makery.address.view.PersonOverviewController;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -13,15 +17,38 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private ObservableList<Person> personData = FXCollections.observableArrayList();
+
+    public MainApp() {
+        // Add some sample data
+        personData.add(new Person("Hans", "Muster"));
+        personData.add(new Person("Ruth", "Mueller"));
+        personData.add(new Person("Heinz", "Kurz"));
+        personData.add(new Person("Cornelia", "Meier"));
+        personData.add(new Person("Werner", "Meyer"));
+        personData.add(new Person("Lydia", "Kunz"));
+        personData.add(new Person("Anna", "Best"));
+        personData.add(new Person("Stefan", "Meier"));
+        personData.add(new Person("Martin", "Mueller"));
+    }
+
+    public ObservableList<Person> getPersonData() {
+        return personData;
+    }
 
     @Override
     public void start(Stage primaryStage) {
+
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("AddressApp");
 
         initRootLayout();
 
         showPersonOverview();
+
+        System.out.println(this.getPersonData());
+
+
     }
 
     /**
@@ -58,6 +85,7 @@ public class MainApp extends Application {
 
             PersonOverviewController controller = loader.getController();
             controller.setMainApp(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
