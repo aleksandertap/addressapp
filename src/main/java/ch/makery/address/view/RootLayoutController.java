@@ -1,24 +1,18 @@
 package ch.makery.address.view;
 
-import java.io.File;
-
+import ch.makery.address.MainApp;
+import ch.makery.address.util.FileUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
-import ch.makery.address.MainApp;
 
-/**
- * The controller for the root layout. The root layout provides the basic
- * application layout containing a menu bar and space where other JavaFX
- * elements can be placed.
- *
- * @author Marco Jakob
- */
+import java.io.File;
+
 public class RootLayoutController {
 
     // Reference to the main application
     private MainApp mainApp;
+    private FileUtil fileUtil = new FileUtil();
 
     /**
      * Is called by the main application to give a reference back to itself.
@@ -35,7 +29,7 @@ public class RootLayoutController {
     @FXML
     private void handleNew() {
         mainApp.getPersonData().clear();
-        mainApp.setPersonFilePath(null);
+        fileUtil.setPersonFilePath(null);
     }
 
     /**
@@ -54,7 +48,8 @@ public class RootLayoutController {
         File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
 
         if (file != null) {
-            mainApp.loadPersonDataFromFile(file);
+            fileUtil.loadPersonDataFromFile(file, mainApp.getPersonData());
+            mainApp.setPersonFilePath(file);
         }
     }
 
@@ -64,9 +59,10 @@ public class RootLayoutController {
      */
     @FXML
     private void handleSave() {
-        File personFile = mainApp.getPersonFilePath();
+        File personFile = fileUtil.getPersonFilePath();
         if (personFile != null) {
-            mainApp.savePersonDataToFile(personFile);
+            fileUtil.savePersonDataToFile(personFile, mainApp.getPersonData());
+            mainApp.setPersonFilePath(personFile);
         } else {
             handleSaveAs();
         }
@@ -92,7 +88,8 @@ public class RootLayoutController {
             if (!file.getPath().endsWith(".xml")) {
                 file = new File(file.getPath() + ".xml");
             }
-            mainApp.savePersonDataToFile(file);
+            fileUtil.savePersonDataToFile(file, mainApp.getPersonData());
+            mainApp.setPersonFilePath(file);
         }
     }
 
@@ -101,7 +98,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleAbout() {
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("AddressApp");
         alert.setHeaderText("About");
         alert.setContentText("Author: Marco Jakob\nWebsite: http://code.makery.ch");
@@ -115,5 +112,10 @@ public class RootLayoutController {
     @FXML
     private void handleExit() {
         System.exit(0);
+    }
+
+    @FXML
+    private void handleShowBirthdayStatistics() {
+        mainApp.showBirthdayStatistics();
     }
 }

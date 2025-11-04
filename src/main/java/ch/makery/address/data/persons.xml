@@ -9,7 +9,7 @@
         <street>some street</street>
     </person>
     <person>
-        <birthday>1999-02-21</birthday>
+        <birthday>1999-05-21</birthday>
         <city>some city</city>
         <firstName>Anna</firstName>
         <lastName>Best</lastName>
@@ -17,10 +17,50 @@
         <street>some street</street>
     </person>
     <person>
-        <birthday>1999-02-21</birthday>
+        <birthday>1999-10-21</birthday>
         <city>some city</city>
         <firstName>ste</firstName>
         <lastName>te</lastName>
+        <postalCode>1234</postalCode>
+        <street>some street</street>
+    </person>
+    <person>
+        <birthday>1999-12-21</birthday>
+        <city>some city</city>
+        <firstName>persson1</firstName>
+        <lastName>1231</lastName>
+        <postalCode>1234</postalCode>
+        <street>some street</street>
+    </person>
+    <person>
+        <birthday>1999-01-21</birthday>
+        <city>some city</city>
+        <firstName>dude</firstName>
+        <lastName>perf</lastName>
+        <postalCode>1234</postalCode>
+        <street>some street</street>
+    </person>
+    <person>
+        <birthday>1999-02-21</birthday>
+        <city>some city</city>
+        <firstName>same</firstName>
+        <lastName>birth</lastName>
+        <postalCode>1234</postalCode>
+        <street>some street</street>
+    </person>
+    <person>
+        <birthday>1999-09-21</birthday>
+        <city>some city</city>
+        <firstName>yeah</firstName>
+        <lastName>haw</lastName>
+        <postalCode>1234</postalCode>
+        <street>some street</street>
+    </person>
+    <person>
+        <birthday>1999-08-21</birthday>
+        <city>some city</city>
+        <firstName>blue</firstName>
+        <lastName>clue</lastName>
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>
