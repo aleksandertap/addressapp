@@ -158,8 +158,10 @@ public class PersonEditDialogController {
             errorMessage += "No valid email!\n";
         }
 
-        if (phoneField.getText().charAt(0) != '+') {
-            errorMessage += "No valid phone number!\n";
+        if (phoneField.getText() == null || phoneField.getText().isEmpty()) {
+            errorMessage += "Phone number is required!\n";
+        } else if (!phoneField.getText().matches("^\\+\\d+$")) {
+            errorMessage += "Phone number must start with '+' and contain only digits.\n";
         }
 
         if (errorMessage.length() == 0) {
