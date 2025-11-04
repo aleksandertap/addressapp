@@ -29,6 +29,10 @@ public class PersonEditDialogController {
     private TextField cityField;
     @FXML
     private TextField birthdayField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField phoneField;
 
 
     private Stage dialogStage;
@@ -68,6 +72,8 @@ public class PersonEditDialogController {
         cityField.setText(person.getCity());
         birthdayField.setText(DateUtil.format(person.getBirthday()));
         birthdayField.setPromptText("dd.mm.yyyy");
+        emailField.setText(person.getEmail());
+        phoneField.setText(person.getPhone());
     }
 
     /**
@@ -91,6 +97,8 @@ public class PersonEditDialogController {
             person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
             person.setCity(cityField.getText());
             person.setBirthday(DateUtil.parse(birthdayField.getText()));
+            person.setEmail(emailField.getText());
+            person.setPhone(phoneField.getText());
 
             okClicked = true;
             dialogStage.close();
@@ -144,6 +152,14 @@ public class PersonEditDialogController {
             if (!DateUtil.validDate(birthdayField.getText())) {
                 errorMessage += "No valid birthday. Use the format dd.mm.yyyy!\n";
             }
+        }
+
+        if (!emailField.getText().contains("@") || emailField.getText().length() == 0) {
+            errorMessage += "No valid email!\n";
+        }
+
+        if (phoneField.getText().charAt(0) != '+') {
+            errorMessage += "No valid phone number!\n";
         }
 
         if (errorMessage.length() == 0) {
