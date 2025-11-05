@@ -3,64 +3,90 @@
     <person>
         <birthday>1999-02-21</birthday>
         <city>some city</city>
+        <email>some@email.com</email>
         <firstName>Hans</firstName>
         <lastName>Muster</lastName>
+        <phone>+123123</phone>
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>
     <person>
         <birthday>1999-05-21</birthday>
         <city>some city</city>
+        <email>some@email.com</email>
         <firstName>Anna</firstName>
         <lastName>Best</lastName>
+        <phone>+123123</phone>
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>
     <person>
         <birthday>1999-10-21</birthday>
         <city>some city</city>
+        <email>some@email.com</email>
         <firstName>ste</firstName>
         <lastName>te</lastName>
+        <phone>+123123</phone>
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>
     <person>
         <birthday>1999-12-21</birthday>
         <city>some city</city>
+        <email>some@email.com</email>
         <firstName>persson1</firstName>
         <lastName>1231</lastName>
+        <phone>+123123</phone>
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>
     <person>
         <birthday>1999-01-21</birthday>
         <city>some city</city>
+        <email>some@email.com</email>
         <firstName>dude</firstName>
         <lastName>perf</lastName>
+        <phone>+123123</phone>
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>
     <person>
         <birthday>1999-02-21</birthday>
-        <city>some city</city>
+        <city>tallinn</city>
+        <email>some@email.com</email>
         <firstName>same</firstName>
         <lastName>birth</lastName>
+        <phone>+123123</phone>
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>
     <person>
         <birthday>1999-09-21</birthday>
         <city>some city</city>
+        <email>some@email.com</email>
         <firstName>yeah</firstName>
         <lastName>haw</lastName>
+        <phone>+123123</phone>
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>
     <person>
         <birthday>1999-08-21</birthday>
         <city>some city</city>
+        <email>some@email.com</email>
         <firstName>blue</firstName>
         <lastName>clue</lastName>
+        <phone>+123123</phone>
+        <postalCode>1234</postalCode>
+        <street>some street</street>
+    </person>
+    <person>
+        <birthday>1999-02-21</birthday>
+        <city>tartu</city>
+        <email>some@email.com</email>
+        <firstName>juss</firstName>
+        <lastName>jussu</lastName>
+        <phone>+1212312</phone>
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>

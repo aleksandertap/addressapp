@@ -118,4 +118,9 @@ public class RootLayoutController {
     private void handleShowBirthdayStatistics() {
         mainApp.showBirthdayStatistics();
     }
+
+    @FXML
+    private void handleShowCityStatistics() {
+        mainApp.showCityStatistics();
+    }
 }

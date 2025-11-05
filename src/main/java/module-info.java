@@ -7,6 +7,7 @@ module ch.makery.address {
 
     // JAXB
     requires jakarta.xml.bind;
+    requires javafx.base;
 
     // Anna FXML-le peegeldusligipääs kontrolleritele
     opens ch.makery.address.view to javafx.fxml;

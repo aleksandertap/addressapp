@@ -2,10 +2,7 @@ package ch.makery.address;
 
 import ch.makery.address.model.Person;
 import ch.makery.address.util.FileUtil;
-import ch.makery.address.view.BirthdayStatisticsController;
-import ch.makery.address.view.PersonEditDialogController;
-import ch.makery.address.view.PersonOverviewController;
-import ch.makery.address.view.RootLayoutController;
+import ch.makery.address.view.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +16,6 @@ import javafx.scene.image.Image;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.prefs.Preferences;
 
 public class MainApp extends Application {
 
@@ -211,6 +207,27 @@ public class MainApp extends Application {
 
             dialogStage.show();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showCityStatistics(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/CityStats.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("City Statistics");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            CityStatsController controller = loader.getController();
+            controller.setPersonData(personData);
+
+            dialogStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

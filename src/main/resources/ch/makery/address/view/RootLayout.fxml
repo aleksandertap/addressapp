@@ -20,7 +20,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Statistics">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#handleShowBirthdayStatistics" text="Show Statistics" />
+              <MenuItem mnemonicParsing="false" onAction="#handleShowBirthdayStatistics" text="Show Birthday Stats" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowCityStatistics" text="Show City Stats" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
