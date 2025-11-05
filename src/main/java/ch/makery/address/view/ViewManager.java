@@ -2,30 +2,23 @@ package ch.makery.address.view;
 
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
-import ch.makery.address.repository.PersonRepository;
-import ch.makery.address.util.FileUtil;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.io.File;
 import java.io.IOException;
 
 public class ViewManager {
 
     private BorderPane rootLayout;
     private MainApp mainApp;
-    private FileUtil fileUtil;
-    private PersonRepository personRepository;
 
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-        this.fileUtil = mainApp.getFileUtil();
-        this.personRepository = mainApp.getPersonRepository();
-    }
+
+   public ViewManager(MainApp mainApp) {
+       this.mainApp = mainApp;
+   }
 
     public void initRootLayout() {
         try {
@@ -47,14 +40,7 @@ public class ViewManager {
             e.printStackTrace();
         }
 
-        // try to load last opened file
-        File file = fileUtil.getPersonFilePath();
-        if (file != null) {
-            fileUtil.loadPersonDataFromFile(file, this.personRepository);
-            mainApp.getPrimaryStage().setTitle("AddressApp - " + file.getName());
-        } else {
-            mainApp.getPrimaryStage().setTitle("AddressApp");
-        }
+
     }
 
     /**
@@ -131,7 +117,7 @@ public class ViewManager {
 
             // Set the persons into the controller.
             BirthdayStatisticsController controller = loader.getController();
-            controller.setPersonData(personRepository.getPersons());
+            controller.setPersonData(mainApp.getPersonRepository().getPersons());
 
             dialogStage.show();
 
@@ -153,7 +139,7 @@ public class ViewManager {
             dialogStage.setScene(scene);
 
             CityStatsController controller = loader.getController();
-            controller.setPersonData(mainApp.getPersonData());
+            controller.setPersonData(mainApp.getPersonRepository().getPersons());
 
             dialogStage.show();
         } catch (IOException e) {

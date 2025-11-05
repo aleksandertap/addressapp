@@ -38,10 +38,6 @@ public class PersonOverviewController {
 
     private MainApp mainApp;
 
-    private PersonRepository personRepository;
-
-    private ViewManager viewManager;
-
     public PersonOverviewController() {
     }
 
@@ -86,7 +82,7 @@ public class PersonOverviewController {
     private void handleDeletePerson() {
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
-            this.personRepository.removePerson(selectedPerson);
+            this.mainApp.getPersonRepository().removePerson(selectedPerson);
         } else {
             // Nothing selected.
             Alert alert = new Alert(AlertType.WARNING);
@@ -102,9 +98,9 @@ public class PersonOverviewController {
     @FXML
     private void handleNewPerson() {
         Person tempPerson = new Person();
-        boolean okClicked = viewManager.showPersonEditDialog(tempPerson);
+        boolean okClicked = this.mainApp.getViewManager().showPersonEditDialog(tempPerson);
         if (okClicked) {
-            this.personRepository.addPerson(tempPerson);
+            this.mainApp.getPersonRepository().addPerson(tempPerson);
         }
     }
 
@@ -116,7 +112,7 @@ public class PersonOverviewController {
     private void handleEditPerson() {
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
-            boolean okClicked = viewManager.showPersonEditDialog(selectedPerson);
+            boolean okClicked = this.mainApp.getViewManager().showPersonEditDialog(selectedPerson);
             if (okClicked) {
                 showPersonDetails(selectedPerson);
             }
@@ -135,8 +131,7 @@ public class PersonOverviewController {
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-        this.personRepository = mainApp.getPersonRepository();
-        this.viewManager = mainApp.getViewManager();
-        personTable.setItems(mainApp.getPersonData());
+
+        personTable.setItems(mainApp.getPersonRepository().getPersons());
     }
 }

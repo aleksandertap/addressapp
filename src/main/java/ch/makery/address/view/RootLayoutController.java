@@ -13,9 +13,6 @@ public class RootLayoutController {
 
     // Reference to the main application
     private MainApp mainApp;
-    private FileUtil fileUtil;
-    private PersonRepository personRepository;
-    private ViewManager viewManager;
 
     /**
      * Is called by the main application to give a reference back to itself.
@@ -24,9 +21,6 @@ public class RootLayoutController {
      */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-        this.personRepository = mainApp.getPersonRepository();
-        this.viewManager = mainApp.getViewManager();
-        this.fileUtil = mainApp.getFileUtil();
     }
 
     /**
@@ -34,8 +28,8 @@ public class RootLayoutController {
      */
     @FXML
     private void handleNew() {
-        this.personRepository.clear();
-        fileUtil.setPersonFilePath(null);
+        this.mainApp.getPersonRepository().clear();
+        this.mainApp.getFileUtil().setPersonFilePath(null);
     }
 
     /**
@@ -54,7 +48,7 @@ public class RootLayoutController {
         File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
 
         if (file != null) {
-            fileUtil.loadPersonDataFromFile(file, this.personRepository);
+            this.mainApp.getFileUtil().loadPersonDataFromFile(file, mainApp.getPersonRepository());
             mainApp.setPersonFilePath(file);
         }
     }
@@ -65,9 +59,9 @@ public class RootLayoutController {
      */
     @FXML
     private void handleSave() {
-        File personFile = fileUtil.getPersonFilePath();
+        File personFile = this.mainApp.getFileUtil().getPersonFilePath();
         if (personFile != null) {
-            fileUtil.savePersonDataToFile(personFile, this.personRepository);
+            this.mainApp.getFileUtil().savePersonDataToFile(personFile, mainApp.getPersonRepository());
             mainApp.setPersonFilePath(personFile);
         } else {
             handleSaveAs();
@@ -94,7 +88,7 @@ public class RootLayoutController {
             if (!file.getPath().endsWith(".xml")) {
                 file = new File(file.getPath() + ".xml");
             }
-            fileUtil.savePersonDataToFile(file, this.personRepository);
+            this.mainApp.getFileUtil().savePersonDataToFile(file, mainApp.getPersonRepository());
             mainApp.setPersonFilePath(file);
         }
     }
@@ -122,11 +116,11 @@ public class RootLayoutController {
 
     @FXML
     private void handleShowBirthdayStatistics() {
-        viewManager.showBirthdayStatistics();
+        this.mainApp.getViewManager().showBirthdayStatistics();
     }
 
     @FXML
     private void handleShowCityStatistics() {
-        viewManager.showCityStatistics();
+        this.mainApp.getViewManager().showCityStatistics();
     }
 }

@@ -1,15 +1,12 @@
 package ch.makery.address.util;
 
 import ch.makery.address.MainApp;
-import ch.makery.address.model.Person;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.repository.PersonRepository;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.prefs.Preferences;
