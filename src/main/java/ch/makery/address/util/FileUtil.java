@@ -3,6 +3,7 @@ package ch.makery.address.util;
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.PersonListWrapper;
+import ch.makery.address.repository.PersonRepository;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
@@ -13,9 +14,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.util.prefs.Preferences;
 
-public class FileUtil { ;
-    Stage primaryStage;
-    MainApp mainApp;
+public class FileUtil {
 
     /**
      * Returns the person file preference, i.e. the file that was last opened.
@@ -55,10 +54,10 @@ public class FileUtil { ;
      *
      * @param file
      */
-    public void loadPersonDataFromFile(File file, ObservableList<Person> personData) {
+    public void loadPersonDataFromFile(File file, PersonRepository personRepository) {
         try {
             if (file == null || !file.isFile() || file.length() == 0) {
-                personData.clear();
+                personRepository.clear();
                 setPersonFilePath(null);
                 System.out.println("No data" +  "File is empty" +  "Loaded empty dataset.");
                 return;
@@ -71,8 +70,8 @@ public class FileUtil { ;
             // Reading XML from the file and unmarshalling.
             PersonListWrapper wrapper = (PersonListWrapper) um.unmarshal(file);
 
-            personData.clear();
-            personData.addAll(wrapper.getPersons());
+            personRepository.clear();
+            personRepository.addPerson(wrapper.getPersons());
 
             // Save the file path to the registry.
             setPersonFilePath(file);
@@ -92,7 +91,7 @@ public class FileUtil { ;
      *
      * @param file
      */
-    public void savePersonDataToFile(File file, ObservableList<Person> personData) {
+    public void savePersonDataToFile(File file, PersonRepository personRepository) {
         try {
             JAXBContext context = JAXBContext
                     .newInstance(PersonListWrapper.class);
@@ -101,7 +100,7 @@ public class FileUtil { ;
 
             // Wrapping our person data.
             PersonListWrapper wrapper = new PersonListWrapper();
-            wrapper.setPersons(personData);
+            wrapper.setPersons(personRepository.getPersons());
 
             // Marshalling and saving XML to the file.
             m.marshal(wrapper, file);

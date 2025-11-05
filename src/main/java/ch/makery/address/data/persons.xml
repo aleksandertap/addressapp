@@ -71,22 +71,22 @@
         <street>some street</street>
     </person>
     <person>
-        <birthday>1999-08-21</birthday>
-        <city>some city</city>
-        <email>some@email.com</email>
-        <firstName>blue</firstName>
-        <lastName>clue</lastName>
-        <phone>+123123</phone>
-        <postalCode>1234</postalCode>
-        <street>some street</street>
-    </person>
-    <person>
         <birthday>1999-02-21</birthday>
         <city>tartu</city>
         <email>some@email.com</email>
         <firstName>juss</firstName>
         <lastName>jussu</lastName>
         <phone>+1212312</phone>
+        <postalCode>1234</postalCode>
+        <street>some street</street>
+    </person>
+    <person>
+        <birthday>1999-02-21</birthday>
+        <city>some city</city>
+        <email>some@email.com</email>
+        <firstName>bub</firstName>
+        <lastName>daah</lastName>
+        <phone>+123123</phone>
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>

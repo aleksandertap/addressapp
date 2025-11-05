@@ -2,6 +2,7 @@ package ch.makery.address.view;
 
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
+import ch.makery.address.repository.PersonRepository;
 import ch.makery.address.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -36,6 +37,8 @@ public class PersonOverviewController {
     private Label phoneLabel;
 
     private MainApp mainApp;
+
+    private PersonRepository personRepository;
 
     public PersonOverviewController() {
     }
@@ -79,9 +82,9 @@ public class PersonOverviewController {
 
     @FXML
     private void handleDeletePerson() {
-        int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
-            personTable.getItems().remove(selectedIndex);
+        Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+        if (selectedPerson != null) {
+            this.personRepository.removePerson(selectedPerson);
         } else {
             // Nothing selected.
             Alert alert = new Alert(AlertType.WARNING);
@@ -99,7 +102,7 @@ public class PersonOverviewController {
         Person tempPerson = new Person();
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
-            mainApp.getPersonData().add(tempPerson);
+            this.personRepository.addPerson(tempPerson);
         }
     }
 
@@ -130,6 +133,7 @@ public class PersonOverviewController {
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
+        this.personRepository = mainApp.getPersonRepository();
         personTable.setItems(mainApp.getPersonData());
     }
 }

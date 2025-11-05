@@ -1,6 +1,7 @@
 package ch.makery.address.view;
 
 import ch.makery.address.MainApp;
+import ch.makery.address.repository.PersonRepository;
 import ch.makery.address.util.FileUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -13,6 +14,7 @@ public class RootLayoutController {
     // Reference to the main application
     private MainApp mainApp;
     private FileUtil fileUtil = new FileUtil();
+    private PersonRepository personRepository;
 
     /**
      * Is called by the main application to give a reference back to itself.
@@ -21,6 +23,7 @@ public class RootLayoutController {
      */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
+        this.personRepository = mainApp.getPersonRepository();
     }
 
     /**
@@ -28,7 +31,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleNew() {
-        mainApp.getPersonData().clear();
+        this.personRepository.clear();
         fileUtil.setPersonFilePath(null);
     }
 
@@ -48,7 +51,7 @@ public class RootLayoutController {
         File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
 
         if (file != null) {
-            fileUtil.loadPersonDataFromFile(file, mainApp.getPersonData());
+            fileUtil.loadPersonDataFromFile(file, this.personRepository);
             mainApp.setPersonFilePath(file);
         }
     }
@@ -61,7 +64,7 @@ public class RootLayoutController {
     private void handleSave() {
         File personFile = fileUtil.getPersonFilePath();
         if (personFile != null) {
-            fileUtil.savePersonDataToFile(personFile, mainApp.getPersonData());
+            fileUtil.savePersonDataToFile(personFile, this.personRepository);
             mainApp.setPersonFilePath(personFile);
         } else {
             handleSaveAs();
@@ -88,7 +91,7 @@ public class RootLayoutController {
             if (!file.getPath().endsWith(".xml")) {
                 file = new File(file.getPath() + ".xml");
             }
-            fileUtil.savePersonDataToFile(file, mainApp.getPersonData());
+            fileUtil.savePersonDataToFile(file, this.personRepository);
             mainApp.setPersonFilePath(file);
         }
     }
