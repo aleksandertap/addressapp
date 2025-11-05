@@ -100,4 +100,14 @@
         <postalCode>1234</postalCode>
         <street>some street</street>
     </person>
+    <person>
+        <birthday>1999-02-21</birthday>
+        <city>some city</city>
+        <email>some@email.com</email>
+        <firstName>asas</firstName>
+        <lastName>sa</lastName>
+        <phone>+123123</phone>
+        <postalCode>1234</postalCode>
+        <street>some stsareet</street>
+    </person>
 </persons>
