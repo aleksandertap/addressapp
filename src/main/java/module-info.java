@@ -9,6 +9,8 @@ module ch.makery.address {
     requires jakarta.xml.bind;
     requires javafx.base;
 
+    requires java.desktop;
+
 
     // Anna FXML-le peegeldusligipääs kontrolleritele
     opens ch.makery.address.view to javafx.fxml;

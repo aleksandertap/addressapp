@@ -13,8 +13,9 @@ public class RootLayoutController {
 
     // Reference to the main application
     private MainApp mainApp;
-    private FileUtil fileUtil = new FileUtil();
+    private FileUtil fileUtil;
     private PersonRepository personRepository;
+    private ViewManager viewManager;
 
     /**
      * Is called by the main application to give a reference back to itself.
@@ -24,6 +25,8 @@ public class RootLayoutController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         this.personRepository = mainApp.getPersonRepository();
+        this.viewManager = mainApp.getViewManager();
+        this.fileUtil = mainApp.getFileUtil();
     }
 
     /**
@@ -119,11 +122,11 @@ public class RootLayoutController {
 
     @FXML
     private void handleShowBirthdayStatistics() {
-        mainApp.showBirthdayStatistics();
+        viewManager.showBirthdayStatistics();
     }
 
     @FXML
     private void handleShowCityStatistics() {
-        mainApp.showCityStatistics();
+        viewManager.showCityStatistics();
     }
 }

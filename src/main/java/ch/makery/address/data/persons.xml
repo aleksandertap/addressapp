@@ -84,10 +84,20 @@
         <birthday>1999-02-21</birthday>
         <city>some city</city>
         <email>some@email.com</email>
-        <firstName>bub</firstName>
+        <firstName>sa</firstName>
         <lastName>daah</lastName>
         <phone>+123123</phone>
         <postalCode>1234</postalCode>
         <street>some street</street>
+    </person>
+    <person>
+        <birthday>1999-02-21</birthday>
+        <city>some city</city>
+        <email>some@email.com</email>
+        <firstName>asd</firstName>
+        <lastName>asdas</lastName>
+        <phone>+123123</phone>
+        <postalCode>1234</postalCode>
+        <street>some ssatreet</street>
     </person>
 </persons>
